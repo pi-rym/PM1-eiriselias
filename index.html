@@ -18,7 +18,7 @@
       <p><span>Mi pagina web</span></p>
     </header>
     <main>
-      <section id="sobreMi">
+      <section id="sobreMi" class="animate">
         <h2>Sobre mi</h2>
         <p>
           Soy un diseñador web con conocimientos en Angular y en este momento me
@@ -28,54 +28,113 @@
         </p>
       </section>
       <h2>mis tecnologías favoritas</h2>
-      <section id="tecnoFavoritas">        
+      <section id="tecnoFavoritas" class="animate">
         <div class="card red">
-            <h3>HTML</h3>
+          <h3>HTML</h3>
           <img src="./assets/img/logoHtml.png" alt="logoHtml" />
         </div>
         <div class="card blue">
-            <h3>CSS</h3>
+          <h3>CSS</h3>
           <img src="./assets/img/logoCss.png" alt="logoCss" />
         </div>
-        <div class="card yellow" >
-            <h3>JAVASCRIPT</h3>
+        <div class="card yellow">
+          <h3>JAVASCRIPT</h3>
           <img src="./assets/img/logoJavaScript.png" alt="logoJavaScript" />
         </div>
         <div class="card red">
-            <h3>ANGULAR</h3>
+          <h3>ANGULAR</h3>
           <img src="./assets/img/logoAngular.png" alt="logoAngular" />
         </div>
         <div class="card blue">
-            <h3>BOOSTRAP</h3>
+          <h3>BOOSTRAP</h3>
           <img src="./assets/img/LogoBostrap.png" alt="LogoBostrap" />
         </div>
         <div class="card yellow">
-            <h3>FIREBASE</h3>
+          <h3>FIREBASE</h3>
           <img src="./assets/img/logoFirebase.png" alt="logoFirebase" />
         </div>
       </section>
       <h2>Nueva actividad</h2>
-      <section id="actividadesFavoritas">
+      <section id="actividadesFavoritas" class="animate">
         <form>
-            <fieldset>
-                <legend>Agregar nueva actividad</legend>
-                <input type="text" id="title" placeholder="Titulo de la actividad" required>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="descricción de la actividad" required></textarea>
-                <input type="url" id="url" placeholder="direccion de la imagen...">
-                <button>Agregar Actividad</button>
-            </fieldset>
+          <fieldset>
+            <legend>Agregar nueva actividad</legend>
+            <input
+              type="text"
+              id="title"
+              placeholder="Titulo de la actividad"
+              required
+            />
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"
+              placeholder="descricción de la actividad"
+              required
+            ></textarea>
+            <input
+              type="url"
+              id="url"
+              placeholder="direccion de la imagen..."
+            />
+            <button>Agregar Actividad</button>
+          </fieldset>
         </form>
       </section>
       <h2>mis actividades favoritas</h2>
-      <section>        
+      <section id="tarjetas" class="animate">
         <div class="tarjetas">
-            <article>
-                <img src="https://www.lingoda.com/wp-content/uploads/2021/11/German-Greetings-1.jpg" alt="hombre dando la mano">
-                <h3>titulo de la actividad</h3>
-                <p>descriccion de la actividad</p>
-            </article>
+          <article>
+            <img
+              src="https://www.lingoda.com/wp-content/uploads/2021/11/German-Greetings-1.jpg"
+              alt="hombre dando la mano"
+            />
+            <div>
+              <h3>saludar</h3>
+              <p>
+                es un acto amable y cortés que implica dar la bienvenida o
+                expresar buenos deseos al encontrarse con alguien. Este gesto es
+                comúnmente acompañado por un saludo verbal, un apretón de manos,
+                un abrazo o cualquier otra forma de reconocimiento y cortesía.
+              </p>
+            </div>
+          </article>
+          <article>
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="hombre dando la mano"
+            />
+            <div>
+              <h3>cantar</h3>
+              <p>
+                es la acción de producir sonidos musicales con la voz,
+                usualmente acompañada de melodía y ritmo. Puede ser una
+                expresión artística, recreativa o cultural, y se realiza a
+                menudo con el propósito de transmitir emociones, contar
+                historias o simplemente disfrutar del acto de hacer música
+                vocal.
+              </p>
+            </div>
+          </article>
+          <article>
+            <img
+              src="https://imagenes.canalrcn.com/lomaslike/te-gusta-bailar-estos-son-los-beneficios-que-tiene-salud.webp?VersionId=XuXkYVoknEq56.w6Lqw2cZHJGVgzg9A3"
+              alt="hombre dando la mano"
+            />
+            <div>
+              <h3>bailar</h3>
+              <p>
+                es la actividad de mover el cuerpo rítmicamente al compás de la
+                música. Puede ser una forma de expresión artística, una
+                actividad social o simplemente una manera de disfrutar y liberar
+                energía. El baile implica una combinación de movimientos
+                coordinados y expresión emocional.
+              </p>
+            </div>
+          </article>
         </div>
-    </section>
+      </section>
     </main>
     <footer>
       <p>Eiris Elias Salazar Aguilar - Front-End Developer © 2024</p>
