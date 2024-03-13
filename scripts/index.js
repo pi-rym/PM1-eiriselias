@@ -8,41 +8,84 @@ class Activity{
 }
 
 class Repository{
-    constructor(){this.activities = []}
+    constructor(){
+        this.activities = [];
+        this.id = 1;
+    }
     //metodo que resiba datos de una actividad, cree una actividad
     createActivity(title, description, url){
-        let id = this.activities.length+1;
-        const newActivity = new Activity(id, title, description, url);
+        const newActivity = new Activity(this.id, title, description, url);    
+        this.id++;    
         this.activities.push(newActivity);
+        alert("Se agrego la actividad "+title)
     }
-
+    maquetado(articulo){
+        return `<article data-id="${articulo.id}" class="articulo">
+        <img
+          src="${articulo.url}"
+          onerror="this.src='./assets/img/sinImagen.png';"
+        />
+        <div>
+          <h3>${articulo.title}</h3>
+          <p>${articulo.description}</p>
+        </div>
+        <button class="btnEliminar">Eliminar</button>
+      </article>`
+    }
     //metodo que permita retornar todas las actividades
-    showActivities(){
-        for(let i=0; i < this.activities.length; i++){
-            console.log(`Actividad ${i+1}: `)
-            console.log(`Titulo: ${this.activities[i].title} `);
-            console.log(`Descricción: ${this.activities[i].description} `);
-            console.log(`Url de la imagen: ${this.activities[i].url}`);
+    getAllActivities(){
+        const contenedor = document.getElementById("tarjetas");
+        contenedor.innerHTML = "";
+
+        this.activities.forEach(arti => {
+            const articuloHtml = this.maquetado(arti);
+            contenedor.innerHTML += articuloHtml;
+        });
+        
+        console.log(repositorio.activities);
+    }
+    
+    //metodo que permita filtrar las actividades
+    deleteActivity(id){
+        if(confirm(`Desea eliminar la actividad`)){        
+            this.activities = this.activities.filter(actividad => actividad.id != id);
+            this.getAllActivities();
         }
     }
 
-    //metodo que permita filtrar las actividades
-    filterActivity(id){
-        console.log(`la actividad del ID: ${id}`);
-        console.log(`lleva como titulo: ${this.activities[id-1].title} `);
-        console.log(`como descricción: ${this.activities[id-1].description} `);
-        console.log(`y su url de la imagen es: ${this.activities[id-1].url}`);
-    }
+
 }
 
 const repositorio = new Repository();
 
-//se crean las actividades
-repositorio.createActivity("saludar","es importante para las relaciones","http://saludar.com");
-repositorio.createActivity("cantar","ayuda para tener una voz afinada","http://cantar.com");
-repositorio.createActivity("ver","sin la vista estariamos en un mundo de oscuridad","http://ver.com");
-repositorio.createActivity("bailar","es un buen ejercicio para el cuerpo","http://bailar.com");
 
-repositorio.filterActivity(3); //se llama la actividad por un filtro
+//recargo el dom
+document.addEventListener("DOMContentLoaded", function(){
 
-repositorio.showActivities(); // se muestran todas las actividades
+    //escucho los click y intifico cual boton eliminar es presionado para eliminar su articulo
+    document.addEventListener("click", function (e){    
+        if(e.target.classList.contains("btnEliminar")){
+            const idArti = e.target.closest(".articulo").dataset.id;
+            repositorio.deleteActivity(idArti);
+        }
+    });
+
+    const formulario = document.querySelector("#formulario");
+    formulario.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        const actividad = new Activity({title, description, url});
+        title = document.querySelector("#title").value;
+        description = document.querySelector("#description").value;
+        url = document.querySelector("#url").value;
+        repositorio.createActivity(title, description, url);
+        repositorio.getAllActivities();
+
+        //despues de agregar la tarjeta me hace scroll a la seccion de ellas
+        const seccionTarjetas = document.getElementById("seccionTarjetas");
+        seccionTarjetas.scrollIntoView({ behavior: 'smooth' });
+
+        document.getElementById("formulario").reset();
+    })
+
+    repositorio.getAllActivities();
+});

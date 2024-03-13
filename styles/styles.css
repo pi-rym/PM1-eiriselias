@@ -144,6 +144,8 @@ button:hover{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    height: auto;
+    justify-items: center;
 }
 article{
     background-color: rgb(0, 0, 48);
@@ -155,6 +157,9 @@ article{
     text-align: center;
     opacity: .5;
     transition: .7s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     img{
         width: 100%;
         height: 200px;
@@ -163,11 +168,19 @@ article{
     }
     div{
         padding: 0 1rem;
-        overflow: hidden;
+        max-width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
     }
     h3{
         margin-bottom: 1rem;
         text-transform: capitalize;
+    }
+    button{
+        width: 100%;
+        height: 2rem;
+        font-size: large;
+        transition: 1s ease-out;
     }
 
 }
@@ -180,6 +193,14 @@ article:hover{
     h3{
         color:yellow;
     }
+    button{
+        background-color: red;
+        color: beige;
+        cursor: pointer;
+        height: 3rem;
+        border: 2px solid beige;
+        border-radius: 0 0 10px 10px;
+    }
 }
 
 footer{
@@ -190,7 +211,7 @@ footer{
 
 /*-------------------------- Animacion ----------*/
 
-.animate{
+.animateLeft{
     view-timeline-name:--caja;
     view-timeline-axis: block;
     animation-timeline: --caja;
@@ -202,7 +223,23 @@ footer{
     from{
         opacity: 0;
         transform: translateX(-100%);
-        
+    }
+    to{
+        opacity: 1;
+    }
+}
+.animateUp{
+    view-timeline-name:--caja;
+    view-timeline-axis: block;
+    animation-timeline: --caja;
+    animation-name: show2;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+@keyframes show2{
+    from{
+        opacity: 0;
+        transform: translateY(100%);
     }
     to{
         opacity: 1;
