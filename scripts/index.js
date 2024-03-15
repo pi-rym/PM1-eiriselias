@@ -26,8 +26,10 @@ class Repository{
           onerror="this.src='./assets/img/sinImagen.png';"
         />
         <div>
-          <h3>${articulo.title}</h3>
-          <p>${articulo.description}</p>
+            <h3>${articulo.title}</h3>
+            <div class="texto">
+                <p>${articulo.description}</p>
+            </div>
         </div>
         <button class="btnEliminar">Eliminar</button>
       </article>`
@@ -41,8 +43,6 @@ class Repository{
             const articuloHtml = this.maquetado(arti);
             contenedor.innerHTML += articuloHtml;
         });
-        
-        console.log(repositorio.activities);
     }
     
     //metodo que permita filtrar las actividades
@@ -73,10 +73,9 @@ document.addEventListener("DOMContentLoaded", function(){
     const formulario = document.querySelector("#formulario");
     formulario.addEventListener("submit", (e)=>{
         e.preventDefault();
-        const actividad = new Activity({title, description, url});
-        title = document.querySelector("#title").value;
-        description = document.querySelector("#description").value;
-        url = document.querySelector("#url").value;
+        const title = document.querySelector("#title").value;
+        const description = document.querySelector("#description").value;
+        const url = document.querySelector("#url").value;
         repositorio.createActivity(title, description, url);
         repositorio.getAllActivities();
 
