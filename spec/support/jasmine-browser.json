@@ -13,7 +13,7 @@
   "env": {
     "stopSpecOnExpectationFailure": false,
     "stopOnSpecFailure": false,
-    "random": true
+    "random": false
   },
   "browser": {
     "name": "firefox"
